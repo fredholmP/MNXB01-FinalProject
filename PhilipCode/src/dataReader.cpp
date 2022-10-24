@@ -1,5 +1,4 @@
-#include "dataReader.h"
-#include "csv.h"
+#include "../include/dataReader.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -17,6 +16,7 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     for (int n; n < skipLines; n++) {
         std::getline(dataFile, helpString);
     }
+    std::cout << helpString << std::endl;
     //Store the lines in lineStorage
     while (std::getline(dataFile, helpString)) {
         lineStorage.push_back(helpString);
@@ -68,11 +68,26 @@ readData::readData(const std::string filename, const int skipLines, const int nC
 
 
 
-    //
+    
+    //Store the first and last year with entries as separate variables. Assumes that entries are in increasing order of year.
+    std::vector<std::string> years = detailtedData[0];
+    std::string stringYear = years[2];
+    //int firstYear = std::stoi(stringYear); //It needs to be stoi and not std::stoi or it doesn't work 
+    std::cout << stringYear << std::endl;
+    //this->_firstYear  = firstYear;
+    //this->_lastYear = detailtedData[0].back();
+
+    //std::vector<std::vector<std::vector<std::vector<std::string>>>> mainData;
+
+
+    //We know want a main vector containing a vector for each, which contains a vector
+    //for each month, which each contains a vector for each day which contains the mean temperature.
+
+
     
     
     auto column = detailtedData[4];
-    std::cout << column[32] << std::endl;
+    std::cout << column[0] << std::endl;
     this->_mainVector = detailtedData;
     dataFile.close();
 

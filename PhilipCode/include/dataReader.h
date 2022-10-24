@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "csv.h"
 #include <fstream>
 
 
@@ -16,7 +15,9 @@ class readData {
 
 
     private:
-        std::string _filename;
+        const std::string _filename;
+        int _firstYear;
+        int _lastYear;
         std::vector<std::vector<std::string>> _mainVector;
 };
 

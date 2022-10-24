@@ -14,8 +14,10 @@ hotCold : hotCold.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o hotCold hotCold.cpp
 
 
-betaTest : include/dataReader.h src/dataReader.cpp testfile.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/dataReader.cpp -o src/dataReader.o
+dataReader.o : include/dataReader.h src/dataReader.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/dataReader.cpp -o src/dataReader.o 
+
+betaTest : src/dataReader.o testfile.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o test src/dataReader.o testfile.cpp 
 	
 
