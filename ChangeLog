@@ -1,1 +1,2 @@
 23/10: Uploaded the raw data and a ROOT version to use on a local WSL installation.
+25/10: Succesfully finished implementing a class to read in the data from the files.

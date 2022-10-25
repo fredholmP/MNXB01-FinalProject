@@ -2,7 +2,7 @@ CXX = g++
 CXXVER = -std=c++17
 CXXFLAGS = -Wall -Wextra -Werror $(CXXVER)
 INCLUDEROOT = -I ../localRoot/rootUbuntu20/INCLUDES
-INCLUDES = -I ./include -I external/include/fast-cpp-csv-parser -lpthread $(INCLUDEROOT)
+INCLUDES = -I ./include -lpthread $(INCLUDEROOT)
 
 all : main.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES)  -o main main.cpp
