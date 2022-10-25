@@ -14,9 +14,10 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     
     //Skip the first skipLines lines.
     for (int n; n < skipLines; n++) {
-        std::getline(dataFile, helpString);
+        std::cout << "hej" << std::endl;
+        //std::getline(dataFile, helpString);
     }
-    std::cout << helpString << std::endl;
+    
     //Store the lines in lineStorage
     while (std::getline(dataFile, helpString)) {
         lineStorage.push_back(helpString);
@@ -86,9 +87,9 @@ readData::readData(const std::string filename, const int skipLines, const int nC
 
     
     
-    auto column = detailtedData[4];
+    auto column = detailtedData[0];
     std::cout << column[0] << std::endl;
-    this->_mainVector = detailtedData;
+    //this->_mainVector = detailtedData;
     dataFile.close();
 
 
