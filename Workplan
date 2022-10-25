@@ -1,0 +1,15 @@
+Workplan for MNXB01 final project.
+
+Chris will do the "Temperature of a given day" part of section 3.1 in the manual. 
+
+
+Philip will do the "warmest and coldest day of the year" part in Section 3.3 in the
+manual and try to find a way to plot a histogram for the length of summer in number of days (by
+the meteorlogical definition of a certain number of days above/below a given temperature).
+In order to do this will I first try to creata class which reads in data file and stores the data in a vector
+with a subvector for each year. Each vector for a given year will then contain a sub vector for each month,
+and each month subvector will contain subvectors for each day/mean temperature for the day in some way.
+
+I will then try to make some functions to calculate the warmest/coldest day of each year and then plot that in a
+histogram. To do the other project I will try to make a function that finds the start and end of a time interval
+where the mean temperature is above some limit and then use that to make the necessary plots.

@@ -1,0 +1,30 @@
+{c1 = new TCanvas("c1", "Tempature of Umea Flyplats", 1600, 700);
+c1->Divide(2,1);
+
+c1->cd(1);
+TH1I* hist = new TH1I("hist", "Temperature of 23/8 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
+ifstream infiles;
+infiles.open("8-23Temp.txt");
+double tmp;
+while (infiles>>tmp) {hist->Fill(tmp);}
+hist->SetFillColor(kRed + 100);
+
+double mean = hist->GetMean(); //The mean of the distribution
+double stdev = hist->GetRMS(); //The standard deviation
+TCanvas* can = new TCanvas();
+hist->Draw();
+
+c1->cd(2);
+
+TH1I* histo = new TH1I("histo", "Temperature of each month of 23 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
+ifstream infile;
+infile.open("temp for date.txt");
+double tmpe;
+while (infile>>tmpe) {histo->Fill(tmpe);}
+histo->SetFillColor(kRed + 100);
+
+double means = histo->GetMean(); //The mean of the distribution
+double stdevi = histo->GetRMS(); //The standard deviation
+histo->Draw();}
+
+
