@@ -13,9 +13,9 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     
     
     //Skip the first skipLines lines.
-    for (int n; n < skipLines; n++) {
+    for (int n = 0; n < skipLines; n++) {
         std::cout << "hej" << std::endl;
-        //std::getline(dataFile, helpString);
+        std::getline(dataFile, helpString);
     }
     
     //Store the lines in lineStorage
@@ -42,7 +42,7 @@ readData::readData(const std::string filename, const int skipLines, const int nC
             line = line.substr(endLoc+1); //Cuts off what was stored and the semicolon.
         }
     }
- 
+    /*
 
     //We now what to separate year, month and time into a column each.
     //Let's make a vector with 5 columns.
@@ -85,12 +85,12 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     //for each month, which each contains a vector for each day which contains the mean temperature.
 
 
+    */
     
-    
-    auto column = detailtedData[0];
+    auto column = columnStorage[0];
     std::cout << column[0] << std::endl;
     //this->_mainVector = detailtedData;
-    dataFile.close();
+    //dataFile.close(); //fstream should be an RAII class anyways.
 
 
 
@@ -99,5 +99,5 @@ readData::readData(const std::string filename, const int skipLines, const int nC
 
 std::vector<std::vector<std::string>> readData::getAll() {
     return this->_mainVector;
-
 }
+
