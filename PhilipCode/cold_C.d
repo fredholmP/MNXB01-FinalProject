@@ -64,5 +64,9 @@
 ./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/Buttons.h
 ./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttBBox2D.h
 ./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttCanvas.h
+./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TLegend.h
+./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TPave.h
+./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TBox.h
+./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttText.h
 ./cold_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RVersion.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RConfig.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TClass.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TDictAttributeMap.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TInterpreter.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TROOT.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TBuffer.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TMemberInspector.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TError.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RtypesImp.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TIsAProxy.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TFileMergeInfo.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TCollectionProxyInfo.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/bin/rootcling
 cold_C__ROOTBUILDVERSION= 6.26/06

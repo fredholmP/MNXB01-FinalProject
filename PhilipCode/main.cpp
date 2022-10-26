@@ -115,7 +115,7 @@ int main() {
     }
 
 
-    std::ofstream output {"hotCold-"+myData.getFilename()} ;
+    std::ofstream output {"hotCold-"+myData.getFilename()};
     std::ofstream output2 {"summerStart-"+myData.getFilename()};
 
     for (int n = 0; n < static_cast<int>(dataValues.size()); n++) {

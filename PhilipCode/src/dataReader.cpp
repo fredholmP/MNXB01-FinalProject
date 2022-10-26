@@ -117,7 +117,6 @@ readData::readData(const std::string filename, const int skipLines, const int nC
         int year = std::stoi(detailedData[0][n]) - this->_firstYear; //Year 1 has index 0
         int month = std::stoi(detailedData[1][n]) -1 ; //Month 1 has index 0
         int day = std::stoi(detailedData[2][n]) - 1 ; //Day 1 has index 0
-
         double temperature = std::stod(detailedData[4][n]); //Stod converts a string to a double.
         //std::cout << year << "," << month << "," << day << "," << temperature << std::endl;
         

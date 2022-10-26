@@ -64,5 +64,9 @@
 ./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/Buttons.h
 ./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttBBox2D.h
 ./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttCanvas.h
+./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TLegend.h
+./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TPave.h
+./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TBox.h
+./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TAttText.h
 ./hot_C.so: /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RVersion.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RConfig.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TClass.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TDictAttributeMap.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TInterpreter.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TROOT.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TBuffer.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TMemberInspector.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TError.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/RtypesImp.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TIsAProxy.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TFileMergeInfo.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/include/TCollectionProxyInfo.h /home/fredholm/git/MNXB01-FinalProject/localRoot/rootUbuntu20/bin/rootcling
 hot_C__ROOTBUILDVERSION= 6.26/06

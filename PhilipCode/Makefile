@@ -10,7 +10,8 @@ all : src/dataReader.o main.cpp
 dataReader.o : include/dataReader.h src/dataReader.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c include/dataReader.h src/dataReader.cpp -o src/dataReader.o 
 
-
+test : test.cpp src/dataReader.o
+	$(CXX) $(CXXFLAGS) $(INCLUDES)  -o test test.cpp src/dataReader.o
 
 
 .PHONY: all
