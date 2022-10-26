@@ -5,10 +5,17 @@
 #include <fstream>
 #include <set>
 #include <numeric>
+#include <algorithm>
 
 
 readData::readData(const std::string filename, const int skipLines, const int nCols)  {
-    this->_filename = filename;
+    try {
+        int index = filename.find_last_of("/");
+        this->_filename = filename.substr(index+1); 
+    } catch (...) {
+        this->_filename = filename;
+    }
+    
     std::ifstream dataFile {filename};
     std::string helpString;
     std::vector<std::string> lineStorage;
@@ -17,7 +24,9 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     //Skip the first skipLines lines.
     for (int n = 0; n < skipLines; n++) {
         std::getline(dataFile, helpString);
-    }
+    } 
+    
+
     
     //Store the lines in lineStorage
     while (std::getline(dataFile, helpString)) {
@@ -28,13 +37,12 @@ readData::readData(const std::string filename, const int skipLines, const int nC
     int endLoc;
     std::string tempStorage;
     std::vector<std::vector<std::string>> columnStorage;
-
+    
     //Creates a vector with nCols subvectors to store the columns
     for (int n = 0; n < nCols; n++) {
         std::vector<std::string> newVec;
         columnStorage.push_back(newVec);
     }
-
     for (std::string line : lineStorage) {
         for (int j = 0; j < nCols ; j++) {
             endLoc = line.find(";"); //Finds the next semicolon
@@ -72,9 +80,15 @@ readData::readData(const std::string filename, const int skipLines, const int nC
 
     
     //Store the first and last year with entries as separate variables. Assumes that entries are in increasing order of year.
-    int firstYear = std::stoi(detailedData[0][0]); //stoi converts a string to an int
+    std::vector<int> years;
+    for (auto i : detailedData[0]) {
+        years.push_back(std::stoi(i));
+    }
+    int minyear = *std::min_element(years.begin(), years.end());
+    int maxyear = *std::max_element(years.begin(), years.end());
+    int firstYear = minyear; //stoi converts a string to an int detailedData[0][0]
     this->_firstYear = firstYear;
-    this->_lastYear = std::stoi((detailedData[0]).back());
+    this->_lastYear = maxyear;
     
     
 
@@ -95,34 +109,37 @@ readData::readData(const std::string filename, const int skipLines, const int nC
             }
         }
     }
-
+    
+    
     //Add all measurements for each day
     int numberOfElements = static_cast<int>(detailedData[0].size());
     for (int n = 0; n < numberOfElements; n++) {
         int year = std::stoi(detailedData[0][n]) - this->_firstYear; //Year 1 has index 0
         int month = std::stoi(detailedData[1][n]) -1 ; //Month 1 has index 0
         int day = std::stoi(detailedData[2][n]) - 1 ; //Day 1 has index 0
-       
-        double temperature = std::stod(detailedData[4][n]); //Stod converts a string to a double.
 
-        mainData[year][month][day].push_back(temperature);
+        double temperature = std::stod(detailedData[4][n]); //Stod converts a string to a double.
+        //std::cout << year << "," << month << "," << day << "," << temperature << std::endl;
         
+        mainData[year][month][day].push_back(temperature); 
+
+    
     }
     //Take the average
+    
     for (auto year : mainData) {
         for (auto month : year) {
             for (auto day : month) {
                 double average = std::accumulate(day.begin(), day.end(), 0);
-                average /= day.size();
+                average /= day.size();   
                 day.clear();
                 day.push_back(average);
             }
         }
     }
 
-    
     this->_mainVector = mainData;
-
+    
 
 
 }

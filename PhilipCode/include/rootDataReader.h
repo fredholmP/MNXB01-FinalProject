@@ -144,23 +144,21 @@ class readData {
                 
             }
             //Take the average
-            int elementcounter = 0;
+            try {
             for (auto year : mainData) {
                 for (auto month : year) {
                     for (auto day : month) {
-                        std::cout << elementcounter << std::endl;
-                        try {
+                        
                         if (day.size() > 0 ) {
                             double average = std::accumulate(day.begin(), day.end(), 0);
                             average /= day.size();
                             day.clear();
                             day.push_back(average);
-                            elementcounter++;
-                        } } catch(...) {std::cout << day[0] << std::endl;}
+                        }
                     }
                 }
             }
-
+             } catch(...) {std::cout << "test" << std::endl;}
             
             this->_mainVector = mainData;
 

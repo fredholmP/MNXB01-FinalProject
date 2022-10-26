@@ -69,6 +69,7 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "testmacro.C": "cpp"
+        "testmacro.C": "cpp",
+        "hotCold.C": "cpp"
     }
 }
