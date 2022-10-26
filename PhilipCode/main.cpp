@@ -89,16 +89,11 @@ int checkSummer(readData *data, int chosenYear) {
         }
         daycounter++;
     }
-    
+
     return summerstart;
 
 
-
-
 }
-
-
-
 
 
 
@@ -127,11 +122,6 @@ int main() {
         output << warmestDay[n] << "," << coldestDay[n] << std::endl; 
         output2 << summer[n] << std::endl;
     }
-    
-    
-    
-
-
     
 
 }

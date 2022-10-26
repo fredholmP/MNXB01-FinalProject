@@ -4,8 +4,9 @@
 #include <fstream>
 
 #include "TH1.h"
+#include "TCanvas.h"
 
-void mymacro() {
+void hot() { 
     std::vector<int> hottestDay;
     std::ifstream data {"hotCold-smhi-opendata_1_72450_20210926_100728_Boras.csv"};
     std::string helpstring;
@@ -16,14 +17,15 @@ void mymacro() {
     }
 
 
+    TCanvas* c1 = new TCanvas("c1", "Warmest Day of the Year", 800,800);
+    TH1D* warmhist = new TH1D("warmhist", "test histogram; counts; temp", 366,0,366);
+    for (int n = 0; n < static_cast<int>(hottestDay.size()); n++) {
+        warmhist->AddBinContent(hottestDay[n]);
 
-    TH1D* myHist = new TH1D("myHist", "test histogram; counts; temp", 365,0,364);
-    myHist->AddBinContent(5);
-    /*for (int n = 0; n < static_cast<int>(hottestDay.size()); n++) {
-        myHist->AddBinContent(n);
-    }*/
+
+    }
     
-    myHist->Draw();
+    warmhist->Draw();
 
     
 

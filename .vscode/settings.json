@@ -70,6 +70,12 @@
         "valarray": "cpp",
         "variant": "cpp",
         "testmacro.C": "cpp",
-        "hotCold.C": "cpp"
+        "hotCold.C": "cpp",
+        "hotCold copy.C": "cpp",
+        "cold.C": "cpp",
+        "hot.C": "cpp",
+        "hot copy.C": "cpp",
+        "summe.C": "cpp",
+        "summer.C": "cpp"
     }
 }
