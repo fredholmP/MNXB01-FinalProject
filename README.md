@@ -1,5 +1,6 @@
 # MNXB01-FinalProject
 Final Project for the course MNXB01 at Lund University 2022.
+The draft report is the file "draftReport.pdf", placed both in the top directory and in the "Latex" directory.
 --------------------------------
 How to Generate Philip's Plots
 -------------------------------
