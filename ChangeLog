@@ -1,3 +1,6 @@
 23/10: Uploaded the raw data and a ROOT version to use on a local WSL installation.
 25/10: Succesfully finished implementing a class to read in the data from the files.
 26/10: Succesfully managed to create the plots for the hottest and coldest day.
+26/10: Managed to generate plots for the first day of summer.
+27/10: Fixed an error with the plot for the first day of summer and made a note on why the implemntation
+        in the mainfile to check the day is not great in the hotCold() function.
