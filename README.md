@@ -3,7 +3,7 @@ Final Project for the course MNXB01 at Lund University 2022.
 --------------------------------
 How to Generate Philip's Plots
 -------------------------------
-To make sure that everything, use Ubuntu 20 and run
+To make sure that everything works, use Ubuntu 20 and run
 "source /localRoot/rootUbuntu20/bin/thisroot.sh"
 to make sure root is running properly. Then, cd into the directory "PhilipCode". There, run 
 "make all" in the terminal to generate datafiles starting with "hotCold-" and "summerStart-" necessary for the root plots.
