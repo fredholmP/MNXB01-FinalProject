@@ -11,8 +11,11 @@ to make sure root is running properly. Then, cd into the directory "PhilipCode".
 Then, copy and paste these files into the directory "rootmacros". 
 
 After this, type "root" in the terminal to begin using root. In root, run 
+
 ".L rootmacros/hot.C+",
+
 ".L rootmacros/cold.C+" and
+
 ".L rootmacros/summer.C+"
 
 to load the functions "hot()", "cold()" and "summer()". Running these functions will create the used plots.
