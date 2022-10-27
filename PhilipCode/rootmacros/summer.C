@@ -45,6 +45,7 @@ void summer() {
 
 
 
+    c1->SaveAs("summer.pdf");
 
 
 

@@ -12,7 +12,7 @@
 
 /*Usage information
 //Input: path to a filename/filename with measurements stored with increasing time
-//Member variables: 
+//Private Member variables: 
 _firstYear : Contains the value of the first year of measurements.
 _lastYear : Contains the value of the last year of measurements.
 _filename : Contains the filename/path to file that was read
@@ -40,7 +40,7 @@ class readData {
         int _firstYear; //but I couldn't figure out to initialise them when using a custom (non-list)
         int _lastYear; //constructor without getting an error about modifying consts.
 
-        //Year/Month/Day/Value
+        //Year/Month/Day/Temperature
         std::vector<std::vector<std::vector<std::vector<double>>>> _mainVector;
 };
 

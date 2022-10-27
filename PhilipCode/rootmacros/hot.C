@@ -43,4 +43,5 @@ void hot() {
     std::cout << "The warmest day is (on average) " << meanWarmDay << "." << std::endl; 
     //If I wasn't so short on time a Gaussian fit would be better (and give me a standard deviation.)
 
+    c1->SaveAs("hot.pdf");
 }

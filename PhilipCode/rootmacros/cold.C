@@ -49,6 +49,8 @@ void cold() {
 
     std::cout << "The coldest day is (on average) " << meanColdDay << "." << std::endl; 
     //If I wasn't so short on time a Gaussian fit would be better (and give me a standard deviation.)
+    
+    c1->SaveAs("cold.pdf");
 
 
 
