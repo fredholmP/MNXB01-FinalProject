@@ -4,3 +4,5 @@
 26/10: Managed to generate plots for the first day of summer.
 27/10: Fixed an error with the plot for the first day of summer and made a note on why the implemntation
         in the mainfile to check the day is not great in the hotCold() function.
+        
+27/10: Added the plots to the Latex-document.
