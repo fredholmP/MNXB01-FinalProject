@@ -54,7 +54,7 @@ In order to be able to draw conclusions about some physical phenomena, such as t
 In order to be able make the analysis of what day is the first day of summer, a definition of when summer starts must first be laid out. The definition chosen for this project was 5 consecutive days of an average temperature greater or equal than 10.0 \textdegree C. \newline
 \indent In order to be able to read in the data to be analysed, a class called \texttt{readData} , in C++ code according to the C++17 standard, was created and used by placing a source file in a folder called \texttt{src} and a header file in a folder called \texttt{include} inside the folder called \texttt{PhilipCode} [1]. The class \texttt{readData} would take a file name for a file as the same folder as the final program and how many header lines of a text file with relevant (and properly formatted) data to read in. It would then have three getter-functions, one to get the first year of measurements, one to get the last year where the data had measurements, one to get the file name of the read in file and finally one to get the data that was read in. The read in data was stored in in a vector from the C++ standard library, which in turn contained one vector for each year that there had been measurements. Each vector for a year in turn contained twelve vectors, one for each year. Finally, each 'month-vector' contained 31 vectors, one for each possible day, within which (that is to say within the 'day-vectors') the average of the measured values for that day was stored. If no measurements were available for a given day, that 'day-vector' was left empty. \newline
 \indent In order to actually find the warmest and coldest day of each year, as well as the start of summer, a file called \texttt{main.cpp} was placed in the folder \texttt{PhilipCode} and when compiled had access to the \texttt{dataReader} class by being compiled with a translation unit. This \texttt{main.cpp} file contained a function for finding either the hottest or coldest day of a given year by taking a pointer to a 'year-vector' of the type that was stored in the vector given by the getter function for the data of the \texttt{readData}-class. Similarly, there was also a function for finding the first day of summer, according to the definition presented earlier, by taking a pointer to a 'year-vector'. It should be noted that the way these functions operated was by creating a 'flattened' vector, which created a vector of as many elements as there were (nested) day vectors in the 'year-vector' given to the function as an argument. If a day had no measured values, it was still added to the 'flattened' vector and given a 'garbage' value, either extremely big or extremely small, as to not interfere with the logic used to find the desired day. It is important to note that since the 'year-vectors' month vectors always had 31 'day-vectors', the number of days in the flattened vector was always greater than 366, as even days which do not exist, such as a February 31st, were still added as a 'garbage' value. Finally, the \texttt{main.cpp} created output files storing the hottest and coldest days found of each year by the index of the hottest day in the flattened year vector. It also outputted a datafile with the index of the first day (in the flattened year vector) of the first day to meet the previously stated requirement for the start of summer. \newline \indent
-In order to plot the results, three ROOT macros, called \texttt{hot.C}, \texttt{summer.C} and \texttt{summer.C}, and placed in the \texttt{PhilipCode} folder, were used. These macros read in the relevant data file created from the \texttt{main.cpp} file and created histograms with 366 bins from one to 366. It then added the number of counts from the read in processed data to the relevant bins. Note that for the macro \texttt{cold.C}, there was instead 400 bins between $-200$ and 199, and all counts for days with day number greater than 180 were given to the bin which had day number of 365 less than the relevant day. Note also that these 'days' give the day out of a 'year' where each of the twelve months have 31 days. The macros then also saved the histograms as graphs and printed the mean value of the day from the read in data and printed it to the standard output. 
+In order to plot the results, three ROOT macros, called \texttt{hot.C}, \texttt{summer.C} and \texttt{summer.C}, and placed in the \texttt{PhilipCode} folder, were used. These macros read in the relevant data file created from the \texttt{main.cpp} file and created histograms with 366 bins from one to 366. It then added the number of counts from the read in processed data to the relevant bins. Note that for the macro \texttt{cold.C}, there was instead 400 bins between $-200$ and 199, and all counts for days with day number greater than 180 were given to the bin which had day number of 365 less than the relevant day. Note also that these 'days' give the day out of a 'year' where each of the twelve months have 31 days. The macros then also saved the histograms as graphs and printed the mean value of the day from the read in data and printed it to the standard output. Note that in [1] the macros, along with the processed data, have been moved to a folder called \texttt{rootmacros} in the folder \texttt{PhilipCode}.
 
 
 \section{Method}
@@ -63,26 +63,35 @@ The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file f
 
 
 \section{Results}
+The mean day as for being the coldest day of the year was found to be day $31.6812$, the mean day for being the coldest day of the year was found to be day $ 192.428$ and the mean day to be the start of summer was found to be day $139.051$. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.
 
 
 %Philip's Figures
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.50]{philipCold.pdf}
-\caption{Shows the number of occurrences of a specific day being the coldest day of that year in Borås. Negative days indicate that the day was in the end of the previous year and its value for the day was shifted back 365 days. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=0.9\linewidth]{philipCold.pdf}
+   \caption*{Figure 1: Shows the number of occurrences of a specific day being the coldest day of that year in Borås. Negative days indicate that the day was in the end of the previous year and its value for the day was shifted back 365 days. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.
+   }
+\end{subfigure}\hfill
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=0.9\linewidth]{philipHot.pdf}
+  \caption*{Figure 2: Shows the number of occurrences of a specific day being the warmest day of that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days. \newline \newline \newline  \mbox{         }}
+\end{subfigure}
+
 \end{figure}
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.50]{philipHot.pdf}
-\caption{Shows the number of occurrences of a specific day being the warmest day of that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
-\end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.50]{philipSummer.pdf}
-\caption{Shows the number of occurrences of a specific day being the first day of summer that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
+\includegraphics[scale=0.45]{philipSummer.pdf}
+\caption*{Figure 3: Shows the number of occurrences of a specific day being the first day of summer that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
 \end{figure}
 \newpage
 
@@ -93,14 +102,14 @@ The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file f
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{chrisFig1.pdf}
-\caption{Temperature of Umeå Airport in 23/8 from 1962 to 2020.}
+\caption*{Figure 4: Temperature of Umeå Airport in 23/8 from 1962 to 2020.}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{chrisFig3.pdf}
-\caption{ Temperature of Umeå Airport in each of the date of 23 since 1962 to 2020.}
+\caption*{Figure 5: Temperature of Umeå Airport in each of the date of 23 since 1962 to 2020.}
 \end{figure}
 
 
