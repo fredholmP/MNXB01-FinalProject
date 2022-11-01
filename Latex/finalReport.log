@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.9.5)  27 OCT 2022 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.9.5)  1 NOV 2022 10:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -857,25 +857,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <philipCold.pdf, id=45, 569.12625pt x 552.0625pt>
 File: philipCold.pdf Graphic file (type pdf)
 <use philipCold.pdf>
-Package pdftex.def Info: philipCold.pdf  used on input line 62.
+Package pdftex.def Info: philipCold.pdf  used on input line 61.
 (pdftex.def)             Requested size: 284.56242pt x 276.03056pt.
 <philipHot.pdf, id=46, 569.12625pt x 552.0625pt>
 File: philipHot.pdf Graphic file (type pdf)
 <use philipHot.pdf>
-Package pdftex.def Info: philipHot.pdf  used on input line 69.
+Package pdftex.def Info: philipHot.pdf  used on input line 68.
 (pdftex.def)             Requested size: 284.56242pt x 276.03056pt.
  [2 <./philipCold.pdf, page is rotated 90 degrees>]
 <philipSummer.pdf, id=95, 569.12625pt x 552.0625pt>
 File: philipSummer.pdf Graphic file (type pdf)
 <use philipSummer.pdf>
-Package pdftex.def Info: philipSummer.pdf  used on input line 75.
+Package pdftex.def Info: philipSummer.pdf  used on input line 74.
 (pdftex.def)             Requested size: 284.56242pt x 276.03056pt.
  [3 <./philipHot.pdf, page is rotated 90 degrees> <./philipSummer.pdf, page is 
 rotated 90 degrees>]
 <chrisFig1.pdf, id=188, 569.12625pt x 387.4475pt>
 File: chrisFig1.pdf Graphic file (type pdf)
 <use chrisFig1.pdf>
-Package pdftex.def Info: chrisFig1.pdf  used on input line 86.
+Package pdftex.def Info: chrisFig1.pdf  used on input line 85.
 (pdftex.def)             Requested size: 341.47838pt x 232.47029pt.
 
 
@@ -884,43 +884,47 @@ on <1.7>, but at most version <1.5> allowed
 <chrisFig3.pdf, id=189, 845.0471pt x 597.50804pt>
 File: chrisFig3.pdf Graphic file (type pdf)
 <use chrisFig3.pdf>
-Package pdftex.def Info: chrisFig3.pdf  used on input line 93.
+Package pdftex.def Info: chrisFig3.pdf  used on input line 92.
 (pdftex.def)             Requested size: 591.52895pt x 418.25278pt.
 
-Overfull \hbox (91.04495pt too wide) in paragraph at lines 93--94
+Overfull \hbox (91.04495pt too wide) in paragraph at lines 92--93
  [][] 
  []
 
-[4 <./chrisFig1.pdf, page is rotated 90 degrees>]
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+[4 <./chrisFig1.pdf, page is rotated 90 degrees>] [5 <./chrisFig3.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-[5 <./chrisFig3.pdf>] (finalReport.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+[6] (finalReport.aux)
 Package rerunfilecheck Info: File `finalReport.out' has not changed.
 (rerunfilecheck)             Checksum: 1846EDD254AC1830A165A00161A997A0;521.
  ) 
 Here is how much of TeX's memory you used:
- 26281 strings out of 478582
- 533150 string characters out of 2842929
+ 26280 strings out of 478582
+ 533135 string characters out of 2842929
  938445 words of memory out of 3000000
- 44087 multiletter control sequences out of 15000+600000
- 473715 words of font info for 45 fonts, out of 8000000 for 9000
+ 44086 multiletter control sequences out of 15000+600000
+ 473368 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,7n,89p,1198b,769s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/Fredholm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb><C:/Users/Fredholm/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmr12.pfb><C:/Users/Fredholm/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Fredholm/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on finalReport.pdf (5 pages, 166742 bytes).
+/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on finalReport.pdf (6 pages, 160220 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

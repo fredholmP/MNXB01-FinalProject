@@ -48,8 +48,7 @@
 \newpage
 
 \section{Introduction}
-As discussed talked about with Oxana, we will only put our plots into this draft report and update it later with the text.
-
+In order to be able to draw conclusions about some physical phenomena, such as the climate of Earth, it is sometimes necessary to be able to process large amounts of data. In order to save a considerable amount of time doing so, it is often the case that such processing may be done with the help of a computer programming language. The purpose of the subject of this report has been to try to use the programming language C++ in order to to process data from the SMHI OpenData initiative and draw conclusion about climate and weather trends from this data. In particular, attempts have been made in order to analyse the data and find the distribution of coldest and hottest day of each year, the first day of summer as well as to analyse the temperature of a given day of the year (August 23rd) over many years.
 
 \section{Theory}
 \section{Method}
@@ -116,9 +115,17 @@ As discussed talked about with Oxana, we will only put our plots into this draft
 
 \section{Discussion}
 %In order to make the histogram, i have use of the excel and root. Firstly, I use the finding function in excel to locate the string or the data I need. However, it is in a string format, and i need to separate the temperature data from the string. Hence i make use of the data analysis function in excel. It can sepraate the string by detecting each of the symbol(such as ;,) in the string. As a result i can seprate the temperature data I need from the original excel file.After that I use Win Zip to transfer the revised data to Auora. For the coding part, I create a new canvas named as c1 and with the title of Temperature of Umeå FLyplats. SInce I want to show the two graphs in the same page and in parllel, so i make use of the function of Divide(2,1). After that I create a histogram named as hist with the x,y axis be [°c], and Entries respectively. And the pixels of the histogram is set to 700. Besdies, the range of x axis is from -30 to 40. Then, I try to input the data file which named as 8-23Temp.txt into the histogram by using the command ifstream infiles and infiles.open. After that i store the data in a variable named as tmp by using the command double.
+
+\newpage
 \section{References}
-[1] The lab manual \textit{LAB MANUAL TITLE}, given out by Lund University in association with the course COURSE NUMBER during the SEASON semester of YEAR. \newline \newline
-\noindent 
+[1] The code in the folder "PhilipCode" available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
+
+\noindent [2] The code in the folders INSERT CHRIS'S FOLDERS LOCATION HERE available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
+
+\noindent [3] The data available from January 1st 1884 at 07.00 up until June 1st 2021 at 06.00 for the city Borås, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}  . \newline
+
+
+\noindent [4] The data available from DAY TIME up until DAY TIME for the "Umeå Flygplats" measuring station, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer} . 
 
 
 

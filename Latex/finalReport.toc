@@ -3,4 +3,4 @@
 \contentsline {section}{Method}{2}{section*.4}%
 \contentsline {section}{Results}{2}{section*.5}%
 \contentsline {section}{Discussion}{5}{section*.11}%
-\contentsline {section}{References}{5}{section*.12}%
+\contentsline {section}{References}{6}{section*.12}%
