@@ -37,8 +37,8 @@
 
 
 
-\title{Measuring Climate Trends using ROOT}
-\author{MNXB01 \\ Philip J. Fredholm \\ }
+\title{Studying Climate Trends using C++ and ROOT}
+\author{MNXB01 \\ Philip J. Fredholm \\Lee Chun Hin }
 
 
 
@@ -48,38 +48,135 @@
 \newpage
 
 \section{Introduction}
+In order to be able to draw conclusions about some physical phenomena, such as the climate of Earth, it is sometimes necessary to be able to process large amounts of data. In order to save a considerable amount of time doing so, it is often the case that such processing may be done with the help of a computer programming language. The purpose of the subject of this report has been to try to use the programming language C++ in order to to process data from the SMHI OpenData initiative and draw conclusion about climate and weather trends from this data. In particular, attempts have been made in order to analyse the data and find the distribution of coldest and hottest day of each year, the first day of summer as well as to analyse the temperature of a given day of the year (August 23rd) over many years.
+
 \section{Theory}
+In order to be able make the analysis of what day is the first day of summer, a definition of when summer starts must first be laid out. The definition chosen for this project was 5 consecutive days of an average temperature greater or equal than 10.0 \textdegree C. This is also in accordance with SMHI's definition [5]. \newline
+\indent In order to be able to read in the data to be analysed, a class called \texttt{readData} , in C++ code according to the C++17 standard, was created and used by placing a source file in a folder called \texttt{src} and a header file in a folder called \texttt{include} inside the folder called \texttt{PhilipCode} [1]. The class \texttt{readData} would take a file name for a file placed in the same folder as the final program and how many header lines of a text file with relevant (and properly formatted) data to read in. It would then have three getter-functions, one to get the first year of measurements of the read in dataset, one to get the last year where the data had measurements, one to get the file name of the read in file and finally one to get the data that was read in. The read in data was stored in in a vector from the C++ standard library, which in turn contained one vector for each year that there had been measurements. Each vector for a year in turn contained twelve vectors, one for each year. Finally, each 'month-vector' contained 31 vectors, one for each possible day, within which (that is to say within the 'day-vectors') the average of the measured values for that day was stored. If no measurements were available for a given day, that 'day-vector' was left empty. \newline
+\indent In order to actually find the warmest and coldest day of each year, as well as the start of summer, a file called \texttt{main.cpp} was placed in the folder \texttt{PhilipCode} and when compiled had access to the \texttt{dataReader} class by being compiled with a translation unit. This \texttt{main.cpp} file contained a function for finding either the hottest or coldest day of a given year by taking a pointer to a 'year-vector' of the type that was stored in the vector given by the getter function for the data of the \texttt{readData}-class. Similarly, there was also a function for finding the first day of summer, according to the definition presented earlier, by taking a pointer to a 'year-vector'. It should be noted that the way these functions operated was by creating a 'flattened' vector, which created a vector of as many elements as there were (nested) day vectors in the 'year-vector' given to the function as an argument. If a day had no measured values, it was still added to the 'flattened' vector and given a 'garbage' value, either extremely big or extremely small, as to not interfere with the logic used (in the implementation of the function) to find the desired day. It is important to note that since the year-vectors' month vectors always had 31 'day-vectors', the number of days in the flattened vector was always greater than 366, as even days which do not exist, such as a February 31st, were still added as a 'garbage' value. Finally, the \texttt{main.cpp} created output files storing the hottest and coldest days found of each year by the index of the hottest day in the flattened year vector. It also outputted a datafile with the index of the first day (in the flattened year vector) of the first day to meet the previously stated requirement for the start of summer. \newline \indent
+In order to plot the results, three ROOT macros, called \texttt{hot.C}, \texttt{cold.C} and \texttt{summer.C}, and placed in the \texttt{PhilipCode} folder, were used. These macros read in the relevant data file created from the \texttt{main.cpp} file and created histograms with 366 bins from one to 366. It then added the number of counts from the read in processed data to the relevant bins. Note that for the macro \texttt{cold.C}, there was instead 400 bins between $-200$ and 199, and all counts for days with day number greater than 180 were given to the bin which had day number of 365 less than the relevant day. Note also that these 'days' give the day out of a 'year' where each of the twelve months have 31 days. The macros then also saved the histograms as graphs and printed the mean value of the day from the read in data and printed it to the standard output. Note that in [1] the macros, along with the processed data, have been moved to a folder called \texttt{rootmacros} in the folder \texttt{PhilipCode}.
+
+
 \section{Method}
+The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file for the translation unit for the \texttt{readData}-class and the flags \texttt{-Wall}, \texttt{-Wextra} and \texttt{-Werror} and the version flag \texttt{-std=c++17}. The compilation was done with the help of a program called \texttt{Make}. The outputted file was then run, with the relevant data file to read from being placed in the same directory as the file which was run, and data files containing the processed data were outputted. Following this, ROOT version 6.26/06 for Ubuntu 20 was run on Ubuntu 20, running through Windows subsystem for Linux (WSL2). The macros \texttt{hot.C}, \texttt{cold.C} and \texttt{summer.C} were compiled with the \texttt{.L <filename>+}-syntax in ROOT. The defined functions in these macros were then ran and the outputted values of the means were read off from the the standard output and the generated histograms were saved.
+
+
+
 \section{Results}
-Figure 1.1 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.We can predict the probability of particular tmeperature by using the mathematical below:
-Z=(X-μ)/σ where Z=Standard score,,σ=standard deviation,μ=population mean
-For example if we want to predict what is the probability for the coming 23/8 to be in the temperature of 12°c.By applying the above equation,
-Z=(12-16.37)/3.254
-Z=-1.34
-By looking the table below(figure1.2), we can observe the probability of different value of standard score.
-
-In this case, the probabilty will be in0.09.
-
-Figure 1.2 show each of the date 23 in every month since 1962 to 2020. The mean and the standard deviation are 5.662 and 10.43 respectively.
-As discussed above, we can use the same formula to predcit the temperature of the coming date 23 for having specific temperature.
-
-Figure 1.1 having a lower standard deviation than figure 1.2, which means that the data in fig.1,1 are more less disperse and more closing to the mean, which lead to a more focusing graph.
+The mean day as for being the coldest day of the year was found to b, rounded to the nearest integer) day $32$, the mean day for being the coldest day of the year was found to be day $192$ and the mean day to be the start of summer was found to be day $1391$. All of these numbers were also rounded to the nearest integer. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.
 
 
-\begin{figure}
+%Philip's Figures
+
+\begin{figure}[H]
 \centering
-\includegraphics[scale=1]{filename.pdf}
-\caption{Write your caption here.}
-Figure1.1:Temperature of Umeå Airport in 23/8 from 1962 to 2020
-Figure 1.2:Standard score table
-Figure 1.3: Temperature of Umeå Airport in each of the date of 23 since 1962 to 2020
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=0.9\linewidth]{philipCold.pdf}
+   \caption*{Figure 1: Shows the number of occurrences of a specific day being the coldest day of that year in Borås. Negative days indicate that the day was in the end of the previous year and its value for the day was shifted back 365 days. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.
+   }
+\end{subfigure}\hfill
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=0.9\linewidth]{philipHot.pdf}
+  \caption*{Figure 2: Shows the number of occurrences of a specific day being the warmest day of that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days. \newline \newline \newline  \mbox{         }}
+\end{subfigure}
+
 \end{figure}
 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{philipSummer.pdf}
+\caption*{Figure 3: Shows the number of occurrences of a specific day being the first day of summer that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
+\end{figure}
+\newpage
+
+
+
+
+%Chris's Figures
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=0.9\linewidth]{chrisFig1.pdf}
+   \caption*{}
+\end{subfigure}\hfill
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \captionsetup{width = 0.9\linewidth}
+  \includegraphics[width=1.5\linewidth]{chrisFig3.pdf}
+  \caption*{}
+\end{subfigure}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{chrisFig1.pdf}
+\caption*{Figure 4: Temperature of Umeå Airport in 23/8 from 1962 to 2020.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{chrisFig3.pdf}
+\caption*{Figure 5: Temperature of Umeå Airport in each of the date of 23 since 1962 to 2020.}
+\end{figure}
+
+
+
+
+%Figure 1.1 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.We can predict the probability of particular tmeperature by using the mathematical below:
+%Z=(X-μ)/σ where Z=Standard score,,σ=standard deviation,μ=population mean
+%For example if we want to predict what is the probability for the coming 23/8 to be in the temperature of 12°c.By applying the above equation,
+%Z=(12-16.37)/3.254
+%Z=-1.34
+%By looking the table below(figure1.2), we can observe the probability of different value of standard score.
+
+%In this case, the probabilty will be in0.09.
+
+%Figure 1.2 show each of the date 23 in every month since 1962 to 2020. The mean and the standard deviation are 5.662 and 10.43 respectively.
+%As discussed above, we can use the same formula to predcit the temperature of the coming date 23 for having specific temperature.
+
+%Figure 1.1 having a lower standard deviation than figure 1.2, which means that the data in fig.1,1 are more less disperse and more closing to the mean, which lead to a more focusing graph.
+
+
+
+\newpage
 \section{Discussion}
-In order to make the histogram, i have use of the excel and root. Firstly, I use the finding function in excel to locate the string or the data I need. However, it is in a string format, and i need to separate the temperature data from the string. Hence i make use of the data analysis function in excel. It can sepraate the string by detecting each of the symbol(such as ;,) in the string. As a result i can seprate the temperature data I need from the original excel file.After that I use Win Zip to transfer the revised data to Auora. For the coding part, I create a new canvas named as c1 and with the title of Temperature of Umeå FLyplats. SInce I want to show the two graphs in the same page and in parllel, so i make use of the function of Divide(2,1). After that I create a histogram named as hist with the x,y axis be [°c], and Entries respectively. And the pixels of the histogram is set to 700. Besdies, the range of x axis is from -30 to 40. Then, I try to input the data file which named as 8-23Temp.txt into the histogram by using the command ifstream infiles and infiles.open. After that i store the data in a variable named as tmp by using the command double.
+It may be concluded that it was possible to produce histograms for the coldest and hottest days of the year, as well as for first day of summer. As for the calculated mean values for the relevant days, the coldest day was found to be, rounded upwards, to the 32nd day which would place it somewhere close to February 2nd, which seems reasonable. The first day of summer was found to occur around day 139. Considering that the start of June, the start of the six month where 5 months of about 30 days have passed, should be around day 150, this does not seem unreasonable. As for the hottest day of the year, the mean was around day 192. If the beginning of August occurs after seven months of approximately 30 days, that would place it at around day 210. Thus, from every day experience, a calculated value of 192 seems to be within reasonable bounds. \newline 
+\indent There are however some things which should be clearly remarked upon. That each month was assumed to have 31 days clearly means that the listed means do not corresponds to the actual day of an actual day of the Gregorian calendar. Secondly, as the days occurring after day 180 were shifted back by 365 days, while the used 'years' had 31 days each month, it is likely that many days for Figure 1 were not shifted properly. Since Figure 1 seems to mostly follow the normal distribution of a Gaussian, the large peak seemingly occurring 'off-center' of the thought of Gaussian could likely be explained by this. As for Figure 2 and Figure 3, these seem to, at least by eye, look somewhat like normal distribution. Furthermore, a significant improvement to taking the mean day for each respective quantity would probably had been to fit Gaussians to the histograms in Figure 1, Figure 2 and Figure 3 and look for what value these were centred around. This would also had provided other interesting results such as the standard deviations. \newline
+\indent As for other things that may be improved upon, using a separate library for both reading in the data and for storing the dates, as to make sure that the processed data actually refers to the Gregorian calendar, would probably have been a big improvement to the code and thus the produced results. \newline
+\indent Another thing to discuss is how the calculation of the average temperature of a given day was done. This was done by taking the average of all available measurements for a given day. Considering that the data [3] was not evenly spread throughout the day, this would clearly have biased the mean temperature of a day upwards considering there were not many temperature readings done during night-time. For the coldest and hottest day, more detailed data would probably not had made much of a difference since the coldest calendar day (24 hours) would be likely to have both the coldest day and the coldest night. Similarly, the hottest calendar day would likely correspond to both the hottest day and hottest night most years. However, for the data regarding the start of summer, the complication of not having the true mean temperature probably moved the calculated start of summer to a somewhat earlier day as the data was biased towards daytime. One way to improve upon this would had been to gather more data of how the temperature varies throughout the entire calendar day in Borås, perhaps by performing some Fourier decomposition, and then interpolating the data. This would then had let us compute a more accurate mean temperature for a given day. \newline
+\indent To conclude; it is clear that the programming tools were successfully able to identify climate trends and give qualitative conclusions. However, the conclusions would have benefited from a more thorough implementation in order to be able to draw more quantitative conclusions, especially regarding properly implementing the Gregorian calendar.
+
+
+
+
+
+
+%In order to make the histogram, i have use of the excel and root. Firstly, I use the finding function in excel to locate the string or the data I need. However, it is in a string format, and i need to separate the temperature data from the string. Hence i make use of the data analysis function in excel. It can sepraate the string by detecting each of the symbol(such as ;,) in the string. As a result i can seprate the temperature data I need from the original excel file.After that I use Win Zip to transfer the revised data to Auora. For the coding part, I create a new canvas named as c1 and with the title of Temperature of Umeå FLyplats. SInce I want to show the two graphs in the same page and in parllel, so i make use of the function of Divide(2,1). After that I create a histogram named as hist with the x,y axis be [°c], and Entries respectively. And the pixels of the histogram is set to 700. Besdies, the range of x axis is from -30 to 40. Then, I try to input the data file which named as 8-23Temp.txt into the histogram by using the command ifstream infiles and infiles.open. After that i store the data in a variable named as tmp by using the command double.
+
+\newpage
 \section{References}
-[1] The lab manual \textit{LAB MANUAL TITLE}, given out by Lund University in association with the course COURSE NUMBER during the SEASON semester of YEAR. \newline \newline
-\noindent 
+[1] The code in the folder "PhilipCode", available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
+
+\noindent [2] The code in the folders INSERT CHRIS'S FOLDERS LOCATION HERE available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
+
+\noindent [3] The data available from January 1st 1884 at 07.00 up until June 1st 2021 at 06.00 for the city Borås, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}  . \newline
+
+
+\noindent [4] The data available from DAY TIME up until DAY TIME for the "Umeå Flygplats" measuring station, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer} . \newline
+
+\noindent [5] The website \href{https://www.smhi.se/en/weather/observations/season-arrival/som/2022}{https://www.smhi.se/en/weather/observations/season-arrival/som/2022}, last viewed on November 4th 2022.
 
 
 

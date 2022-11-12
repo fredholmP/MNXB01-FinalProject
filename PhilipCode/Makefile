@@ -1,26 +1,17 @@
 CXX = g++
 CXXVER = -std=c++17
 CXXFLAGS = -Wall -Wextra -Werror $(CXXVER)
-INCLUDEROOT = -I ../localRoot/rootUbuntu20/INCLUDES
-INCLUDES = -I ./include -I external/include/fast-cpp-csv-parser -lpthread $(INCLUDEROOT)
+INCLUDES = -I ./include -lpthread 
 
-all : main.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES)  -o main main.cpp
-
-
-
-
-hotCold : hotCold.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o hotCold hotCold.cpp
+all : src/dataReader.o main.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES)  -o main main.cpp src/dataReader.o
 
 
 dataReader.o : include/dataReader.h src/dataReader.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/dataReader.cpp -o src/dataReader.o 
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c include/dataReader.h src/dataReader.cpp -o src/dataReader.o 
 
-betaTest : src/dataReader.o testfile.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o test src/dataReader.o testfile.cpp 
-	
-
+test : test.cpp src/dataReader.o
+	$(CXX) $(CXXFLAGS) $(INCLUDES)  -o test test.cpp src/dataReader.o
 
 
 .PHONY: all
