@@ -16,7 +16,7 @@ c1->cd(2);
 
 TH1I* Tgraph2= new TH1I("Tgraph2", "Temperature of each month of 23 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
 ifstream infile;
-infile.open("temp for date.txt");
+infile.open("tempfordate.txt");
 double y;
 while (infile>>y) {Tgraph2->Fill(y);}
 Tgraph2->SetFillColor(kRed + 100);
