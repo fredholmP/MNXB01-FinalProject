@@ -2,29 +2,28 @@
 c1->Divide(2,1);
 
 c1->cd(1);
-TH1I* hist = new TH1I("hist", "Temperature of 23/8 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
+TH1I* Tgraph1 = new TH1I("Tgraph1", "Temperature of 23/8 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
 ifstream infiles;
 infiles.open("8-23Temp.txt");
-double tmp;
-while (infiles>>tmp) {hist->Fill(tmp);}
-hist->SetFillColor(kRed + 100);
-
-double mean = hist->GetMean(); //The mean of the distribution
-double stdev = hist->GetRMS(); //The standard deviation
-TCanvas* can = new TCanvas();
-hist->Draw();
+double x;
+while (infiles>>x) {Tgraph1->Fill(x);}
+Tgraph1->SetFillColor(kRed + 100);
+double mean = Tgraph1->GetMean(); //The mean of the distribution
+double stdev = Tgraph1->GetRMS(); //The standard deviation
+Tgraph1->Draw();
 
 c1->cd(2);
 
-TH1I* histo = new TH1I("histo", "Temperature of each month of 23 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
+TH1I* Tgraph2= new TH1I("Tgraph2", "Temperature of each month of 23 from 1962 to 2020;[#circC];Entries", 700, -30, 40);
 ifstream infile;
 infile.open("temp for date.txt");
-double tmpe;
-while (infile>>tmpe) {histo->Fill(tmpe);}
-histo->SetFillColor(kRed + 100);
+double y;
+while (infile>>y) {Tgraph2->Fill(y);}
+Tgraph2->SetFillColor(kRed + 100);
 
-double means = histo->GetMean(); //The mean of the distribution
-double stdevi = histo->GetRMS(); //The standard deviation
-histo->Draw();}
+double means = Tgraph2->GetMean(); //The mean of the distribution
+double stdevi = Tgraph2->GetRMS(); //The standard deviation
+Tgraph2->Draw();}
+
 
 
