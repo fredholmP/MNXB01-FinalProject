@@ -66,7 +66,7 @@ The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file f
 
 
 \section{Results}
-The mean day as for being the coldest day of the year was found to b, rounded to the nearest integer) day $32$, the mean day for being the coldest day of the year was found to be day $192$ and the mean day to be the start of summer was found to be day $1391$. All of these numbers were also rounded to the nearest integer. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.The mean temperature of Umeå Airport in 23Agust from 1962 to 2020 is 16.3 degree celsius with a standard deviation of 3.2.
+The mean day as for being the coldest day of the year was found to b, rounded to the nearest integer) day $32$, the mean day for being the coldest day of the year was found to be day $192$ and the mean day to be the start of summer was found to be day $139$. All of these numbers were also rounded to the nearest integer. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.The mean temperature of Umeå Airport in 23Agust from 1962 to 2020 is 16.3 degree celsius with a standard deviation of 3.2.
 
 %Philip's Figures
 
@@ -94,8 +94,8 @@ The mean day as for being the coldest day of the year was found to b, rounded to
 \centering
 \includegraphics[scale=0.45]{philipSummer.pdf}
 \caption*{Figure 3: Shows the number of occurrences of a specific day being the first day of summer that year in Borås. Note that the 'days' given here is the day out of a year where each of the twelve months are taken to have 31 days.}
-\end{figure}
-\newpage
+\end{figure} \vspace{0.5cm}
+
 
 
 
@@ -105,8 +105,8 @@ The mean day as for being the coldest day of the year was found to b, rounded to
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{chrisFig4.pdf}
- \caption*{Figure 4: The left graph shows temperature of Ume˚a Airport in 23/8 from 1962 to 2020 while the right graph shows the temperature of Ume˚a Airport in each of the date of 23 since 1962 to 2020.}
+\includegraphics[scale=0.85]{chrisFig4.pdf}
+ \caption*{Figure 4: The left graph shows temperature of Umeå Airport in 23/8 from 1962 to 2020 while the right graph shows the temperature of Umeå Airport in each of the date of 23 since 1962 to 2020.}
 
 \end{figure}
 
@@ -118,12 +118,9 @@ It may be concluded that it was possible to produce histograms for the coldest a
 \indent There are however some things which should be clearly remarked upon. That each month was assumed to have 31 days clearly means that the listed means do not corresponds to the actual day of an actual day of the Gregorian calendar. Secondly, as the days occurring after day 180 were shifted back by 365 days, while the used 'years' had 31 days each month, it is likely that many days for Figure 1 were not shifted properly. Since Figure 1 seems to mostly follow the normal distribution of a Gaussian, the large peak seemingly occurring 'off-center' of the thought of Gaussian could likely be explained by this. As for Figure 2 and Figure 3, these seem to, at least by eye, look somewhat like normal distribution. Furthermore, a significant improvement to taking the mean day for each respective quantity would probably had been to fit Gaussians to the histograms in Figure 1, Figure 2 and Figure 3 and look for what value these were centred around. This would also had provided other interesting results such as the standard deviations. \newline
 \indent As for other things that may be improved upon, using a separate library for both reading in the data and for storing the dates, as to make sure that the processed data actually refers to the Gregorian calendar, would probably have been a big improvement to the code and thus the produced results. \newline
 \indent Another thing to discuss is how the calculation of the average temperature of a given day was done. This was done by taking the average of all available measurements for a given day. Considering that the data [3] was not evenly spread throughout the day, this would clearly have biased the mean temperature of a day upwards considering there were not many temperature readings done during night-time. For the coldest and hottest day, more detailed data would probably not had made much of a difference since the coldest calendar day (24 hours) would be likely to have both the coldest day and the coldest night. Similarly, the hottest calendar day would likely correspond to both the hottest day and hottest night most years. However, for the data regarding the start of summer, the complication of not having the true mean temperature probably moved the calculated start of summer to a somewhat earlier day as the data was biased towards daytime. One way to improve upon this would had been to gather more data of how the temperature varies throughout the entire calendar day in Borås, perhaps by performing some Fourier decomposition, and then interpolating the data. This would then had let us compute a more accurate mean temperature for a given day. \newline
-\indent To conclude; it is clear that the programming tools were successfully able to identify climate trends and give qualitative conclusions. However, the conclusions would have benefited from a more thorough implementation in order to be able to draw more quantitative conclusions, especially regarding properly implementing the Gregorian calendar.
-
- \newline
-\indent
-The left graph of Fig4 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.It is possible to predict the probability of particular tmeperature by using the mathematical formula below:\newline\indent
-Z=(X-μ)/σ where Z=Standard score,,σ=standard deviation,μ=population mean\newline\indent
+\indent To conclude; it is clear that the programming tools were successfully able to identify climate trends and give qualitative conclusions. However, the conclusions would have benefited from a more thorough implementation in order to be able to draw more quantitative conclusions, especially regarding properly implementing the Gregorian calendar. \newline
+\indent The left graph of Fig4 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.It is possible to predict the probability of particular tmeperature by using the mathematical formula below:\newline\indent
+Z=(X-$\mu$)/$\sigma$ where Z=Standard score,,$\sigma$=standard deviation,$\mu$=population mean\newline\indent
 For example if we want to predict what is the probability for the coming 23/8 to be in the temperature of 12°c.By applying the above equation,\newline\indent
 Z=(12-16.37)/3.254,
 Z=-1.34 \newline\indent
@@ -139,12 +136,12 @@ The right graph of figure4 show each of the date 23 in every month since 1962 to
 \section{References}
 [1] The code in the folder "PhilipCode", available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
 
-\noindent [2] The code in the folders INSERT CHRIS'S FOLDERS LOCATION HERE available on a remote Git repository on GitHub at \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
+\noindent [2] The code in the folder "ChrisCode" on a remote Git repository on GitHub at\newline \href{https://github.com/fredholmP/MNXB01-FinalProject}{https://github.com/fredholmP/MNXB01-FinalProject} . \newline
 
 \noindent [3] The data available from January 1st 1884 at 07.00 up until June 1st 2021 at 06.00 for the city Borås, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}  . \newline
 
 
-\noindent [4] The data available from DAY TIME up until DAY TIME for the "Umeå Flygplats" measuring station, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer} . \newline
+\noindent [4] The data available for the "Umeå Flygplats" measuring station, provided by Lund Univeristy in association with the course MNXB01 during the autumn semester of 2022. At the time of writing, this data may be downloaded from the website \href{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer}{https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer} . \newline
 
 \noindent [5] The website \href{https://www.smhi.se/en/weather/observations/season-arrival/som/2022}{https://www.smhi.se/en/weather/observations/season-arrival/som/2022}, last viewed on November 4th 2022.
 
