@@ -55,16 +55,18 @@ In order to be able make the analysis of what day is the first day of summer, a 
 \indent In order to be able to read in the data to be analysed, a class called \texttt{readData} , in C++ code according to the C++17 standard, was created and used by placing a source file in a folder called \texttt{src} and a header file in a folder called \texttt{include} inside the folder called \texttt{PhilipCode} [1]. The class \texttt{readData} would take a file name for a file placed in the same folder as the final program and how many header lines of a text file with relevant (and properly formatted) data to read in. It would then have three getter-functions, one to get the first year of measurements of the read in dataset, one to get the last year where the data had measurements, one to get the file name of the read in file and finally one to get the data that was read in. The read in data was stored in in a vector from the C++ standard library, which in turn contained one vector for each year that there had been measurements. Each vector for a year in turn contained twelve vectors, one for each year. Finally, each 'month-vector' contained 31 vectors, one for each possible day, within which (that is to say within the 'day-vectors') the average of the measured values for that day was stored. If no measurements were available for a given day, that 'day-vector' was left empty. \newline
 \indent In order to actually find the warmest and coldest day of each year, as well as the start of summer, a file called \texttt{main.cpp} was placed in the folder \texttt{PhilipCode} and when compiled had access to the \texttt{dataReader} class by being compiled with a translation unit. This \texttt{main.cpp} file contained a function for finding either the hottest or coldest day of a given year by taking a pointer to a 'year-vector' of the type that was stored in the vector given by the getter function for the data of the \texttt{readData}-class. Similarly, there was also a function for finding the first day of summer, according to the definition presented earlier, by taking a pointer to a 'year-vector'. It should be noted that the way these functions operated was by creating a 'flattened' vector, which created a vector of as many elements as there were (nested) day vectors in the 'year-vector' given to the function as an argument. If a day had no measured values, it was still added to the 'flattened' vector and given a 'garbage' value, either extremely big or extremely small, as to not interfere with the logic used (in the implementation of the function) to find the desired day. It is important to note that since the year-vectors' month vectors always had 31 'day-vectors', the number of days in the flattened vector was always greater than 366, as even days which do not exist, such as a February 31st, were still added as a 'garbage' value. Finally, the \texttt{main.cpp} created output files storing the hottest and coldest days found of each year by the index of the hottest day in the flattened year vector. It also outputted a datafile with the index of the first day (in the flattened year vector) of the first day to meet the previously stated requirement for the start of summer. \newline \indent
 In order to plot the results, three ROOT macros, called \texttt{hot.C}, \texttt{cold.C} and \texttt{summer.C}, and placed in the \texttt{PhilipCode} folder, were used. These macros read in the relevant data file created from the \texttt{main.cpp} file and created histograms with 366 bins from one to 366. It then added the number of counts from the read in processed data to the relevant bins. Note that for the macro \texttt{cold.C}, there was instead 400 bins between $-200$ and 199, and all counts for days with day number greater than 180 were given to the bin which had day number of 365 less than the relevant day. Note also that these 'days' give the day out of a 'year' where each of the twelve months have 31 days. The macros then also saved the histograms as graphs and printed the mean value of the day from the read in data and printed it to the standard output. Note that in [1] the macros, along with the processed data, have been moved to a folder called \texttt{rootmacros} in the folder \texttt{PhilipCode}.
+\newline \indent
+In order to make the histogram for the specific date,23 of August, I have use of the excel and root. Firstly, I use the finding function in excel to locate the string or the data I need. However, it is in a string format, and i need to separate the temperature data from the string. Hence, I make use of the data analysis function in excel. It can separate the string by detecting each of the symbol(such as ;,) in the string. As a result, I can separate the temperature data I need from the original excel file.After that, I use Win Zip to transfer the revised data to Auora. For the coding part, I create a new canvas named as c1 and with the title of Temperature of Umeå FLyplats. Since I want to show the two graphs in the same page and in parllel, so I make use of the function of Divide(2,1).After that, I use the public member function of TH1 which can be used to create a 1-d histogram with variable bins type of numbers.I create a histogram named as Tgraph1 with the x,y axis be [°c], and Entries respectively. Besides, the pixels of the histogram is set to 700. Apart from that, the range of x axis is from -30 to 40. Then, I try to operate and open the data file which named as 8-23Temp.txt into the histogram by using the command ifstream and open. The data should be store in a ifstream called infiles. After that, I create a new variable named as x by using the command double. In order to make sure the data keep on filling untill all data are input to the histogram, I make a while statment. While there is unused data in the infiles, it will always run the loop, and fill into the histogram.Lastly, I try to use  the command SetFillColor to control the color of the graph. Besides, I also create variable of mean and stdv to store the standard deviation and the mean of the graph.The similar strategy was used to create another graph. There are two datasets applied into the code.The first dataset named as "8-23Temp.txt" contain the noon temerature of Umeå Airport in the each 23 August from 1962 to 2020. The second data set which named as "tempfordate.txt" contain the noon temperature of Umeå Airport in the each twenty-third of each month since from 1962 to 2020. To execute the code, a command of .x Final Project should be enter in root, and two graphs should be drawn based on that two datafiles.
 
 
 \section{Method}
-The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file for the translation unit for the \texttt{readData}-class and the flags \texttt{-Wall}, \texttt{-Wextra} and \texttt{-Werror} and the version flag \texttt{-std=c++17}. The compilation was done with the help of a program called \texttt{Make}. The outputted file was then run, with the relevant data file to read from being placed in the same directory as the file which was run, and data files containing the processed data were outputted. Following this, ROOT version 6.26/06 for Ubuntu 20 was run on Ubuntu 20, running through Windows subsystem for Linux (WSL2). The macros \texttt{hot.C}, \texttt{cold.C} and \texttt{summer.C} were compiled with the \texttt{.L <filename>+}-syntax in ROOT. The defined functions in these macros were then ran and the outputted values of the means were read off from the the standard output and the generated histograms were saved.
+The \texttt{main.cpp} file was compiled using \texttt{g++} with an object file for the translation unit for the \texttt{readData}-class and the flags \texttt{-Wall}, \texttt{-Wextra} and \texttt{-Werror} and the version flag \texttt{-std=c++17}. The compilation was done with the help of a program called \texttt{Make}. The outputted file was then run, with the relevant data file to read from being placed in the same directory as the file which was run, and data files containing the processed data were outputted. Following this, ROOT version 6.26/06 for Ubuntu 20 was run on Ubuntu 20, running through Windows subsystem for Linux (WSL2). The macros \texttt{hot.C}, \texttt{cold.C} and \texttt{summer.C} were compiled with the \texttt{.L <filename>+}-syntax in ROOT. The defined functions in these macros were then ran and the outputted values of the means were read off from the the standard output and the generated histograms were saved. In order to run the code for getting the graph, a command of .x Final Project should be input in root, and two graphs should be drawn based on two datafiles.
+
 
 
 
 \section{Results}
-The mean day as for being the coldest day of the year was found to b, rounded to the nearest integer) day $32$, the mean day for being the coldest day of the year was found to be day $192$ and the mean day to be the start of summer was found to be day $1391$. All of these numbers were also rounded to the nearest integer. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.
-
+The mean day as for being the coldest day of the year was found to b, rounded to the nearest integer) day $32$, the mean day for being the coldest day of the year was found to be day $192$ and the mean day to be the start of summer was found to be day $1391$. All of these numbers were also rounded to the nearest integer. The respective histograms for coldest and hottest days, as well as for the first day of summer, may be seen in Figure 1, Figure 2 and Figure 3 respectively.The mean temperature of Umeå Airport in 23Agust from 1962 to 2020 is 16.3 degree celsius with a standard deviation of 3.2.
 
 %Philip's Figures
 
@@ -103,50 +105,10 @@ The mean day as for being the coldest day of the year was found to b, rounded to
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \captionsetup{width = 0.9\linewidth}
-  \includegraphics[width=0.9\linewidth]{chrisFig1.pdf}
-   \caption*{}
-\end{subfigure}\hfill
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \captionsetup{width = 0.9\linewidth}
-  \includegraphics[width=1.5\linewidth]{chrisFig3.pdf}
-  \caption*{}
-\end{subfigure}
+\includegraphics[scale=0.5]{chrisFig4.pdf}
+ \caption*{Figure 4: The left graph shows temperature of Ume˚a Airport in 23/8 from 1962 to 2020 while the right graph shows the temperature of Ume˚a Airport in each of the date of 23 since 1962 to 2020.}
 
 \end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6]{chrisFig1.pdf}
-\caption*{Figure 4: Temperature of Umeå Airport in 23/8 from 1962 to 2020.}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{chrisFig3.pdf}
-\caption*{Figure 5: Temperature of Umeå Airport in each of the date of 23 since 1962 to 2020.}
-\end{figure}
-
-
-
-
-%Figure 1.1 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.We can predict the probability of particular tmeperature by using the mathematical below:
-%Z=(X-μ)/σ where Z=Standard score,,σ=standard deviation,μ=population mean
-%For example if we want to predict what is the probability for the coming 23/8 to be in the temperature of 12°c.By applying the above equation,
-%Z=(12-16.37)/3.254
-%Z=-1.34
-%By looking the table below(figure1.2), we can observe the probability of different value of standard score.
-
-%In this case, the probabilty will be in0.09.
-
-%Figure 1.2 show each of the date 23 in every month since 1962 to 2020. The mean and the standard deviation are 5.662 and 10.43 respectively.
-%As discussed above, we can use the same formula to predcit the temperature of the coming date 23 for having specific temperature.
-
-%Figure 1.1 having a lower standard deviation than figure 1.2, which means that the data in fig.1,1 are more less disperse and more closing to the mean, which lead to a more focusing graph.
 
 
 
@@ -158,12 +120,20 @@ It may be concluded that it was possible to produce histograms for the coldest a
 \indent Another thing to discuss is how the calculation of the average temperature of a given day was done. This was done by taking the average of all available measurements for a given day. Considering that the data [3] was not evenly spread throughout the day, this would clearly have biased the mean temperature of a day upwards considering there were not many temperature readings done during night-time. For the coldest and hottest day, more detailed data would probably not had made much of a difference since the coldest calendar day (24 hours) would be likely to have both the coldest day and the coldest night. Similarly, the hottest calendar day would likely correspond to both the hottest day and hottest night most years. However, for the data regarding the start of summer, the complication of not having the true mean temperature probably moved the calculated start of summer to a somewhat earlier day as the data was biased towards daytime. One way to improve upon this would had been to gather more data of how the temperature varies throughout the entire calendar day in Borås, perhaps by performing some Fourier decomposition, and then interpolating the data. This would then had let us compute a more accurate mean temperature for a given day. \newline
 \indent To conclude; it is clear that the programming tools were successfully able to identify climate trends and give qualitative conclusions. However, the conclusions would have benefited from a more thorough implementation in order to be able to draw more quantitative conclusions, especially regarding properly implementing the Gregorian calendar.
 
+ \newline
+\indent
+The left graph of Fig4 shows the temperature for each month of 23/8 from 1962 to 2020.The mean temperature and the standard deviation is 16.37 and3.254 respectively.It is possible to predict the probability of particular tmeperature by using the mathematical formula below:\newline\indent
+Z=(X-μ)/σ where Z=Standard score,,σ=standard deviation,μ=population mean\newline\indent
+For example if we want to predict what is the probability for the coming 23/8 to be in the temperature of 12°c.By applying the above equation,\newline\indent
+Z=(12-16.37)/3.254,
+Z=-1.34 \newline\indent
+By looking for the standard score table which can be found in the internet, we can observe the probability.In this case, the probabilty will be in0.09.\newline\indent
+
+The right graph of figure4 show each of the date 23 in every month since 1962 to 2020. The mean and the standard deviation are 5.662 and 10.43 respectively.As discussed above, the same formula can be used to predcit the probability of specific temperature for the coming date 23.This graph may be important for the temperature forecasting in the observatory which can act as the statistic reference or database.Besides the left graph having a lower standard deviation than the right, which means that the data in the left are less disperse and more closing to the mean, which lead to a more focusing graph.
 
 
 
 
-
-%In order to make the histogram, i have use of the excel and root. Firstly, I use the finding function in excel to locate the string or the data I need. However, it is in a string format, and i need to separate the temperature data from the string. Hence i make use of the data analysis function in excel. It can sepraate the string by detecting each of the symbol(such as ;,) in the string. As a result i can seprate the temperature data I need from the original excel file.After that I use Win Zip to transfer the revised data to Auora. For the coding part, I create a new canvas named as c1 and with the title of Temperature of Umeå FLyplats. SInce I want to show the two graphs in the same page and in parllel, so i make use of the function of Divide(2,1). After that I create a histogram named as hist with the x,y axis be [°c], and Entries respectively. And the pixels of the histogram is set to 700. Besdies, the range of x axis is from -30 to 40. Then, I try to input the data file which named as 8-23Temp.txt into the histogram by using the command ifstream infiles and infiles.open. After that i store the data in a variable named as tmp by using the command double.
 
 \newpage
 \section{References}
